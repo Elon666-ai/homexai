@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>登录 - HomeX AI</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; }
+        .container { background: white; border-radius: 20px; padding: 40px; max-width: 450px; width: 100%; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+        h2 { color: #333; margin-bottom: 30px; text-align: center; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 5px; color: #666; font-weight: 500; }
+        input { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 14px; }
+        input:focus { outline: none; border-color: #667eea; }
+        button { width: 100%; padding: 14px; background: #667eea; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 500; cursor: pointer; }
+        button:hover { background: #5568d3; }
+        .status { padding: 12px; border-radius: 8px; margin-bottom: 20px; display: none; }
+        .status.error { background: #fee; color: #c33; display: block; }
+        .status.success { background: #efe; color: #3c3; display: block; }
+        .links { text-align: center; margin-top: 20px; display: flex; justify-content: space-between; }
+        .links a { color: #667eea; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🔑 登录账户</h2>
+        <div id="status" class="status"></div>
+        <form id="loginForm">
+            <div class="form-group">
+                <label>邮箱</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label>密码</label>
+                <input type="password" id="password" required>
+            </div>
+            <button type="submit">登录</button>
+        </form>
+        <div class="links">
+            <a href="/register">注册新账户</a>
+            <a href="/forgot-password">忘记密码？</a>
+        </div>
+    </div>
+    <script>
+        const API = 'http://localhost:8080';
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            try {
+                const res = await fetch(`${API}/auth/login`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        email: document.getElementById('email').value,
+                        password: document.getElementById('password').value
+                    })
+                });
+                const data = await res.json();
+                if (res.ok) {
+                    localStorage.setItem('auth_token', data.token);
+                    showStatus('登录成功！', 'success');
+                    setTimeout(() => location.href = '/dashboard', 1500);
+                } else {
+                    showStatus(data.error, 'error');
+                }
+            } catch (e) {
+                showStatus('登录失败', 'error');
+            }
+        });
+        function showStatus(msg, type) {
+            const status = document.getElementById('status');
+            status.textContent = msg;
+            status.className = `status ${type}`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>控制台 - HomeX AI</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #f5f5f5; }
+        .navbar { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
+        .container { max-width: 800px; margin: 40px auto; padding: 20px; }
+        .card { background: white; border-radius: 12px; padding: 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        h2 { color: #333; margin-bottom: 20px; }
+        .info-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #eee; }
+        button { padding: 10px 20px; background: #667eea; color: white; border: none; border-radius: 6px; cursor: pointer; }
+        button:hover { background: #5568d3; }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>🏠 HomeX AI</h1>
+        <button onclick="logout()">退出登录</button>
+    </div>
+    <div class="container">
+        <div class="card">
+            <h2>👤 用户信息</h2>
+            <div class="info-row"><span>邮箱:</span><span id="email">-</span></div>
+            <div class="info-row"><span>姓名:</span><span id="name">-</span></div>
+            <div class="info-row"><span>注册时间:</span><span id="created">-</span></div>
+            <div class="info-row"><span>最后登录:</span><span id="lastLogin">-</span></div>
+        </div>
+    </div>
+    <script>
+        const API = 'http://localhost:8080';
+        const token = localStorage.getItem('auth_token');
+        
+        if (!token) {
+            location.href = '/login';
+        }
+        
+        fetch(`${API}/api/profile`, {
+            headers: {'Authorization': `Bearer ${token}`}
+        })
+        .then(r => r.json())
+        .then(data => {
+            if (data.user) {
+                document.getElementById('email').textContent = data.user.email;
+                document.getElementById('name').textContent = data.user.name;
+                document.getElementById('created').textContent = new Date(data.user.created_at).toLocaleString('zh-CN');
+                document.getElementById('lastLogin').textContent = data.user.last_login_at ? new Date(data.user.last_login_at).toLocaleString('zh-CN') : '-';
+            }
+        })
+        .catch(() => location.href = '/login');
+        
+        function logout() {
+            localStorage.removeItem('auth_token');
+            location.href = '/login';
+        }
+    </script>
+</body>
+</html>

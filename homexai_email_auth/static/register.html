@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>注册 - HomeX AI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; }
+        .container { background: white; border-radius: 20px; padding: 40px; max-width: 450px; width: 100%; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+        h2 { color: #333; margin-bottom: 30px; text-align: center; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 5px; color: #666; font-weight: 500; }
+        input { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 14px; transition: border-color 0.3s; }
+        input:focus { outline: none; border-color: #667eea; }
+        .code-group { display: flex; gap: 10px; }
+        .code-group input { flex: 1; }
+        button { width: 100%; padding: 14px; background: #667eea; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 500; cursor: pointer; transition: all 0.3s; }
+        button:hover { background: #5568d3; transform: translateY(-2px); }
+        button:disabled { background: #ccc; cursor: not-allowed; transform: none; }
+        .btn-code { width: auto; padding: 12px 20px; font-size: 14px; }
+        .status { padding: 12px; border-radius: 8px; margin-bottom: 20px; display: none; }
+        .status.error { background: #fee; color: #c33; display: block; }
+        .status.success { background: #efe; color: #3c3; display: block; }
+        .links { text-align: center; margin-top: 20px; }
+        .links a { color: #667eea; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>📝 注册账户</h2>
+        <div id="status" class="status"></div>
+        <form id="registerForm">
+            <div class="form-group">
+                <label>邮箱</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label>验证码</label>
+                <div class="code-group">
+                    <input type="text" id="code" maxlength="6" required>
+                    <button type="button" class="btn-code" id="sendCodeBtn">发送验证码</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>姓名</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label>密码</label>
+                <input type="password" id="password" minlength="6" required>
+            </div>
+            <button type="submit">注册</button>
+        </form>
+        <div class="links">
+            <a href="/login">已有账户？立即登录</a>
+        </div>
+    </div>
+    <script>
+        const API = 'http://localhost:8080';
+        let countdown = 0;
+        
+        document.getElementById('sendCodeBtn').addEventListener('click', async function() {
+            const email = document.getElementById('email').value;
+            if (!email) return alert('请输入邮箱');
+            if (countdown > 0) return;
+            
+            try {
+                const res = await fetch(`${API}/auth/send-code`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({email, type: 'register'})
+                });
+                const data = await res.json();
+                if (res.ok) {
+                    showStatus(data.message, 'success');
+                    startCountdown();
+                } else {
+                    showStatus(data.error, 'error');
+                }
+            } catch (e) {
+                showStatus('发送失败', 'error');
+            }
+        });
+        
+        document.getElementById('registerForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            try {
+                const res = await fetch(`${API}/auth/register`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        email: document.getElementById('email').value,
+                        password: document.getElementById('password').value,
+                        name: document.getElementById('name').value,
+                        verification_code: document.getElementById('code').value
+                    })
+                });
+                const data = await res.json();
+                if (res.ok) {
+                    localStorage.setItem('auth_token', data.token);
+                    showStatus('注册成功！', 'success');
+                    setTimeout(() => location.href = '/dashboard', 1500);
+                } else {
+                    showStatus(data.error, 'error');
+                }
+            } catch (e) {
+                showStatus('注册失败', 'error');
+            }
+        });
+        
+        function startCountdown() {
+            countdown = 60;
+            const btn = document.getElementById('sendCodeBtn');
+            const timer = setInterval(() => {
+                if (countdown > 0) {
+                    btn.textContent = `${countdown}秒后重试`;
+                    btn.disabled = true;
+                    countdown--;
+                } else {
+                    btn.textContent = '发送验证码';
+                    btn.disabled = false;
+                    clearInterval(timer);
+                }
+            }, 1000);
+        }
+        
+        function showStatus(msg, type) {
+            const status = document.getElementById('status');
+            status.textContent = msg;
+            status.className = `status ${type}`;
+            if (type === 'success') setTimeout(() => status.style.display = 'none', 3000);
+        }
+    </script>
+</body>
+</html>

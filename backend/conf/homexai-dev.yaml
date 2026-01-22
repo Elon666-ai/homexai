@@ -1,0 +1,196 @@
+# HomeX 后端配置文件
+# 文件位置: /opt/homex/backend/config/config.yaml
+
+# 服务器配置
+server:
+  app_name: "HomeX Backend"
+  app_debug: false
+  frontend_url: "https://pp-cdn.org"
+  port: 17006
+  mode: release  # gin mode: debug, release, test
+  host: "127.0.0.1"  # 只监听本地，通过 Nginx 反向代理
+  read_timeout: 60s
+  write_timeout: 60s
+  max_header_bytes: 1048576  # 1MB
+
+# 数据库配置
+database:
+  driver: mysql
+  host: localhost
+  port: 3306
+  user: db
+  password: HelFoot@123
+  master_db: homexai_master
+  charset: utf8mb4
+  parse_time: true
+  loc: Asia/Manila
+  
+  # 连接池配置
+  max_open_conns: 100
+  conn_max_idle_time: 10m
+  max_idle_conns: 10         # 最大空闲连接数
+  conn_max_lifetime: 1800    # 连接最大生命周期(秒) - 30分钟
+
+  # 分表配置
+  shard_count: 16
+  
+  # 日志配置
+  log_level: warn  # silent, error, warn, info
+  slow_threshold: 200ms
+
+# Cloudflare Turnstile
+turnstile:
+  enable: true
+  site_key: 0x4AAAAAACCOIWmaWYMNXYgk
+  site_secret: 0x4AAAAAACCOIfK-kS9xVjJrP0SelW_-Kk0
+
+# Redis 配置
+redis:
+  host: localhost
+  port: 6379
+  password: foot123!
+  db: 0
+  
+  # 连接池配置
+  pool_size: 100
+  min_idle_conns: 10
+  max_retries: 3
+  pool_timeout: 4s
+  idle_timeout: 5m
+  
+  # Key 前缀
+  key_prefix: "homex:"
+
+# JWT 配置
+jwt:
+  secret: 1234@HomeXAI
+  expire_hours: 24
+  refresh_expire_hours: 168  # 7 天
+
+# 日志配置
+log:
+  level: info  # debug, info, warn, error, fatal
+  format: json  # json, text
+  output: file  # console, file, both
+  file_path: /home/devops/logs/homexai/api.log
+  max_size: 100  # MB
+  max_age: 30    # 天
+  max_backups: 10
+  compress: true
+
+# 上传配置
+upload:
+  path: /home/devops/homexai/uploads
+  max_size: 52428800  # 50MB
+  allowed_types:
+    - image/jpeg
+    - image/png
+    - image/gif
+    - application/pdf
+    - application/vnd.ms-excel
+    - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+
+# 邮件配置
+email:
+  smtp_host: smtp.gmail.com
+  smtp_port: 587
+  from_email: "noreply@homex.ph"
+  from_name: "HomeX"
+  username: 91amor9119@gmail.com
+  password: qzdqiknncrgrnrxc
+  use_tls: true
+
+# 短信配置（可选）
+sms:
+  provider: twilio  # twilio, vonage, etc.
+  account_sid: "your-account-sid"
+  auth_token: "your-auth-token"
+  from_number: "+1234567890"
+
+# OAuth 配置 
+# https://console.cloud.google.com/auth/clients/1043361830736-jpnhg8c3q2o29idk4lquqlcd5msk15r1.apps.googleusercontent.com?hl=zh-cn&project=homexai
+oauth:
+  google:
+    client_id: "1043361830736-jpnhg8c3q2o29idk4lquqlcd5msk15r1.apps.googleusercontent.com"
+    client_secret: "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"
+    redirect_url: "https://api.pp-cdn.org/api/v1/auth/google/callback"
+  facebook:
+    client_id: "3341856659301587"
+    client_secret: "c776747a3f8eac06cb151a0edaae6349"
+    redirect_url: "https://api.pp-cdn.org/api/v1/auth/facebook/callback"
+
+# CORS 配置
+cors:
+  allowed_origins:
+    - https://pp-cdn.org
+    - https://www.pp-cdn.org
+    - https://beacon.pp-cdn.org
+  allowed_methods:
+    - GET
+    - POST
+    - PUT
+    - DELETE
+    - PATCH
+    - OPTIONS
+  allowed_headers:
+    - Origin
+    - Content-Type
+    - Accept
+    - Authorization
+    - X-Property-ID
+    - X-Request-ID
+  expose_headers:
+    - Content-Length
+    - X-Request-ID
+  allow_credentials: true
+  max_age: 3600
+
+# 限流配置
+rate_limit:
+  enabled: true
+  requests_per_second: 100
+  burst: 200
+
+# 缓存配置
+cache:
+  default_ttl: 300  # 5 分钟
+  property_ttl: 3600  # 1 小时
+  user_ttl: 1800  # 30 分钟
+
+# 多租户配置
+tenant:
+  # 域名到物业 ID 的映射
+  domain_mapping:
+    "beacon.pp-cdn.org": 1001
+  
+  # 默认物业 ID（用于主站）
+  default_property_id: 0
+
+# 任务队列配置（使用 Redis）
+queue:
+  enabled: true
+  worker_count: 4
+  max_retry: 3
+  
+  # 队列名称
+  queues:
+    email: "homex:queue:email"
+    sms: "homex:queue:sms"
+    image: "homex:queue:image"
+    notification: "homex:queue:notification"
+
+# 监控配置
+monitoring:
+  enabled: true
+  prometheus_port: 9090  # 只监听 localhost
+  health_check_path: /health
+  metrics_path: /metrics
+
+# 功能开关
+features:
+  oauth_enabled: true
+  sms_enabled: false
+  email_enabled: true
+  image_processing_enabled: true
+  audit_log_enabled: true
+  websocket_enabled: true

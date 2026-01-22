@@ -1,0 +1,42 @@
+{
+  "name": "HomeX - Property Management System",
+  "short_name": "HomeX",
+  "description": "HomeX Property Management System for tenants, landlords, and property managers",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0ea5e9",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity"],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "My Bills",
+      "short_name": "Bills",
+      "description": "View your bills",
+      "url": "/my-bills",
+      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Service Requests",
+      "short_name": "Requests",
+      "description": "Manage service requests",
+      "url": "/requests",
+      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192" }]
+    }
+  ]
+}

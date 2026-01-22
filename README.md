@@ -100,7 +100,8 @@
 * **Issue / Wiki**: GitHub Wiki
 * **Community (Discord)**: [https://discord.gg/6cubxZeyh](https://discord.gg/6cubxZeyh)
 * **Email**: [91amor9119@gmail.com](mailto:91amor9119@gmail.com)
-* **WhatsApp Group**: [https://chat.whatsapp.com/CRURMp06rPa7JuFpB0ZOtM](https://chat.whatsapp.com/CRURMp06rPa7JuFpB0ZOtM)
+* **WhatsApp Group**: ![homex-saas-admin](whatsapp-HomeX.png)
+
 
 ---
 

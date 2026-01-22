@@ -95,18 +95,58 @@
 
 ---
 
+### 📫 联系我们 | Contact
+
+* **Issue / Wiki**: GitHub Wiki
+* **Community (Discord)**: [https://discord.gg/6cubxZeyh](https://discord.gg/6cubxZeyh)
+* **Email**: [91amor9119@gmail.com](mailto:91amor9119@gmail.com)
+* **WhatsApp Group**: [https://chat.whatsapp.com/CRURMp06rPa7JuFpB0ZOtM](https://chat.whatsapp.com/CRURMp06rPa7JuFpB0ZOtM)
+
+---
+
 **HomeX，让物业管理进入真正的数字时代。**
 **HomeX — Powering the next generation of property management.**
 
 ---
 
-- demo物业管理端 https://demo.pp-cdn.org/
-Property Admin:     admin@demo.homex.ph / Admin1234!
-Property Staff:     staff@demo.homex.ph / Admin1234!
-Property Accountant: accountant@demo.homex.ph / Admin1234!
-Property Guard:     guard@demo.homex.ph / Admin1234!
+### 🚀 在线演示 | Live Demo
 
-- demo居民端 https://demo.pp-cdn.org/
-Landlords:          landlord1@demo.homex.ph / Home1234!
-Tenants:            tenant1@demo.homex.ph / Home1234!
-SPAs:               spa1@demo.homex.ph / Home1234!
+🔗 **Demo URL**
+[https://demo.pp-cdn.org/](https://demo.pp-cdn.org/)
+
+> 无需注册，可直接体验完整物业管理与社区流程
+> No registration required. Full-feature demo environment.
+
+---
+
+### 👥 演示账号 | Demo Accounts
+
+**Property / Management Roles**
+
+* **Property Admin**
+  [admin@demo.homex.ph](mailto:admin@demo.homex.ph) / Admin1234!
+* **Property Staff**
+  [staff@demo.homex.ph](mailto:staff@demo.homex.ph) / Admin1234!
+* **Property Accountant**
+  [accountant@demo.homex.ph](mailto:accountant@demo.homex.ph) / Admin1234!
+* **Property Guard**
+  [guard@demo.homex.ph](mailto:guard@demo.homex.ph) / Admin1234!
+
+**Resident Roles**
+
+* **Landlord**
+  [landlord1@demo.homex.ph](mailto:landlord1@demo.homex.ph) / Home1234!
+* **Tenant**
+  [tenant1@demo.homex.ph](mailto:tenant1@demo.homex.ph) / Home1234!
+
+**Service Provider**
+
+* **SPA (Service Provider Admin)**
+  [spa1@demo.homex.ph](mailto:spa1@demo.homex.ph) / Home1234!
+
+---
+
+📌 *Demo environment is for evaluation only. Data will be reset periodically.*
+📌 *演示环境仅用于功能体验，数据会定期重置。*
+
+---

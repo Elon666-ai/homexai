@@ -99,7 +99,7 @@
 
 * **Issue / Wiki**: GitHub Wiki
 * **Community (Discord)**: [https://discord.gg/6cubxZeyh](https://discord.gg/6cubxZeyh)
-* **Email**: [91amor9119@gmail.com](mailto:91amor9119@gmail.com)
+* **Email**: [homexai.ph@gmail.com](mailto:homexai.ph@gmail.com)
 * **WhatsApp Group**: ![homex-saas-admin](whatsapp-HomeX.png)
 
 
@@ -113,37 +113,10 @@
 ### 🚀 在线演示 | Live Demo
 
 🔗 **Demo URL**
-[https://demo.pp-cdn.org/](https://demo.pp-cdn.org/)
+[https://icondo.homex.ph/](https://icondo.homex.ph/)
 
 > 无需注册，可直接体验完整物业管理与社区流程
 > No registration required. Full-feature demo environment.
-
----
-
-### 👥 演示账号 | Demo Accounts
-
-**Property / Management Roles**
-
-* **Property Admin**
-  [admin@demo.homex.ph](mailto:admin@demo.homex.ph) / Admin1234!
-* **Property Staff**
-  [staff@demo.homex.ph](mailto:staff@demo.homex.ph) / Admin1234!
-* **Property Accountant**
-  [accountant@demo.homex.ph](mailto:accountant@demo.homex.ph) / Admin1234!
-* **Property Guard**
-  [guard@demo.homex.ph](mailto:guard@demo.homex.ph) / Admin1234!
-
-**Resident Roles**
-
-* **Landlord**
-  [landlord1@demo.homex.ph](mailto:landlord1@demo.homex.ph) / Home1234!
-* **Tenant**
-  [tenant1@demo.homex.ph](mailto:tenant1@demo.homex.ph) / Home1234!
-
-**Service Provider**
-
-* **SPA (Service Provider Admin)**
-  [spa1@demo.homex.ph](mailto:spa1@demo.homex.ph) / Home1234!
 
 ---
 

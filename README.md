@@ -4,30 +4,22 @@
 ---
 
 ### 一句话介绍 | One-liner
-
 **让物业管理更高效，让社区更有价值。**
 **Smarter property management. More valuable communities.**
 
 ---
 
 ### 我们解决什么问题 | What We Solve
-
 * 物业流程繁琐、人工成本高
-
 * 费用收缴效率低、对账困难
-
 * 社区缺乏互动，服务难以商业化
-
 * Manual, fragmented property workflows
-
 * Low payment efficiency & poor transparency
-
 * Inactive communities and limited service monetization
 
 ---
 
 ### HomeX 是什么 | What is HomeX
-
 **HomeX 是一个面向公寓 / 小区 / 商业写字楼的数字化物业管理与社区运营平台，
 帮助物业实现：流程数字化、费用线上化、社区活跃化与服务商业化。**
 
@@ -66,15 +58,11 @@
 ### 为谁而生 | Who It’s For
 
 * 物业管理公司
-
 * 房地产开发商
-
 * 公寓、住宅小区、商业写字楼
 
 * Property management companies
-
 * Real estate developers
-
 * Apartments, residential communities, office buildings
 
 ---
@@ -82,15 +70,11 @@
 ### HomeX 的价值 | Value Proposition
 
 * **降低管理成本，提高运营效率**
-
 * **提升住户体验与社区活跃度**
-
 * **为物业创造持续服务收入**
 
 * **Lower operational costs**
-
 * **Better resident experience & engagement**
-
 * **New recurring revenue for property managers**
 
 ---
@@ -99,9 +83,8 @@
 
 * **Issue / Wiki**: GitHub Wiki
 * **Community (Discord)**: [https://discord.gg/6cubxZeyh](https://discord.gg/6cubxZeyh)
-* **Email**: [homexai.ph@gmail.com](mailto:homexai.ph@gmail.com)
+* **Email**: [philhomex.com@gmail.com](mailto:philhomex.com@gmail.com)
 * **WhatsApp Group**: ![homex-saas-admin](whatsapp-HomeX.png)
-
 
 ---
 
@@ -113,7 +96,7 @@
 ### 🚀 在线演示 | Live Demo
 
 🔗 **Demo URL**
-[https://icondo.homex.ph/](https://icondo.homex.ph/)
+[https://www.philhomex.com/](https://www.philhomex.com/)
 
 > 无需注册，可直接体验完整物业管理与社区流程
 > No registration required. Full-feature demo environment.
